@@ -1,3 +1,3 @@
 # nextjs-blog
 
-https://nextjs-blog-nke0628.vercel.app/
+https://nextjs-blog-lilac-seven-63.vercel.app/
