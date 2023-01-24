@@ -1,9 +1,19 @@
-import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
+import { ParsedUrlQuery } from 'querystring'
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next'
 import { client } from '@/modules/client'
 import { article } from '@/types/type'
 
 type Props = {
   article: article
+}
+
+interface Params extends ParsedUrlQuery {
+  id: string
 }
 
 const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
@@ -30,8 +40,10 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false }
 }
 
-export const getStaticProps = async (context) => {
-  const id = context.params.id
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  params,
+}) => {
+  const id = params!.id
   const data = await client.get({ endpoint: 'articles', contentId: id })
   return {
     props: {
