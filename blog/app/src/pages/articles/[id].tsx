@@ -28,6 +28,9 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           __html: `${article.content}`,
         }}
       />
+      {article.categories.map((categorie) => (
+        <p key={categorie.id}>{categorie.name}</p>
+      ))}
     </main>
   )
 }
