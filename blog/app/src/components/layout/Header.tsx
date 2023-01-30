@@ -4,17 +4,37 @@ type Props = {}
 
 const Header: React.FC<Props> = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const headerLinkList = [
+    {
+      text: 'posts',
+      link: '',
+    },
+    {
+      text: 'work',
+      link: '',
+    },
+    {
+      text: 'profile',
+      link: '',
+    },
+  ]
   return (
     <>
-      <div className="py-4">
-        <header className="flex justify-between items-center">
+      <header className="py-4">
+        <div className="flex justify-between items-center">
           <div className="flex">
             <div className="text-xl">🐻</div>
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
-                <a href="">posts</a>
-                <a href="">work</a>
-                <a href="">profile</a>
+                {headerLinkList.map((headerLink, index) => (
+                  <a
+                    className="text-indigo-400"
+                    key={index}
+                    href={headerLink.link}
+                  >
+                    {headerLink.text}
+                  </a>
+                ))}
               </nav>
             </div>
           </div>
@@ -24,28 +44,58 @@ const Header: React.FC<Props> = ({}) => {
                 setIsOpen(!isOpen)
               }}
             >
-              <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
-              </svg>
+              {!isOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="block h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  className="block h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              )}
             </button>
           </div>
-        </header>
+        </div>
         {isOpen && (
-          <div className="">
+          <div className="md:hidden">
             <nav className="">
-              <a href="" className="block">
-                posts
-              </a>
-              <a href="" className="block">
-                work
-              </a>
-              <a href="" className="block">
-                profile
-              </a>
+              {headerLinkList.map((headerLink, index) => (
+                <a
+                  className="text-indigo-400 block px-1 py-2"
+                  key={index}
+                  href={headerLink.link}
+                >
+                  {headerLink.text}
+                </a>
+              ))}
             </nav>
           </div>
         )}
-      </div>
+      </header>
     </>
   )
 }
