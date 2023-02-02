@@ -21,10 +21,12 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   article,
 }: Props) => {
   return (
-    <main>
-      <h1>{article.title}</h1>
-      <p>{article.publishedAt}</p>
-      <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
+    <main className="py-8 md:w-3/5 mx-auto">
+      <h1 className="text-center text-3xl font-bold my-3 ">{article.title}</h1>
+      <p className="text-right mt-3 mb-9">{article.publishedAt}</p>
+      <div className="mx-auto">
+        <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
+      </div>
       {article.categories.map((categorie) => (
         <p key={categorie.id}>{categorie.name}</p>
       ))}
