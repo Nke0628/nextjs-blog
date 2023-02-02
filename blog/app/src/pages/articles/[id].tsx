@@ -5,6 +5,7 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from 'next'
+import ArticleTeplate from '@/components/organisms/ArticleTemplate'
 import { client } from '@/modules/client'
 import { article } from '@/types/type'
 
@@ -23,11 +24,7 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <main>
       <h1>{article.title}</h1>
       <p>{article.publishedAt}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${article.content}`,
-        }}
-      />
+      <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
       {article.categories.map((categorie) => (
         <p key={categorie.id}>{categorie.name}</p>
       ))}
