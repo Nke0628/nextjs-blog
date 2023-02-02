@@ -16,7 +16,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         return (
           <>
             <h2 className="text-3xl mt-6">{domToReact(domNode.children)}</h2>
-            <hr className="h-[0.1px] mt-2 mb-6 bg-gray-200 border-0 bg-gray-500"></hr>
+            <hr className="h-[0.5px] md:h-[0.1px] mt-2 mb-6 bg-gray-200 border-0 bg-gray-500"></hr>
           </>
         )
       }
