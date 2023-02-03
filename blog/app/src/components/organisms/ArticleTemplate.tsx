@@ -1,9 +1,11 @@
+import hilight from 'highlight.js'
 import parse, {
   Element,
   domToReact,
   HTMLReactParserOptions,
 } from 'html-react-parser'
 import React from 'react'
+import 'highlight.js/styles/hybrid.css'
 
 type Props = {
   contentHtml: string
@@ -61,6 +63,23 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
             </a>
           </>
         )
+      }
+      if (domNode instanceof Element && domNode.name === 'code') {
+        const languageSubset = [
+          'js',
+          'html',
+          'css',
+          'xml',
+          'typescript',
+          'python',
+          'php',
+        ]
+        const hilightCode = hilight.highlightAuto(
+          domToReact(domNode.children) as string,
+          languageSubset,
+        )
+        const dom = parse(hilightCode.value)
+        return <code className="hljs">{dom}</code>
       }
     },
   }
