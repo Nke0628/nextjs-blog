@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 type Props = {}
@@ -24,7 +25,7 @@ const Header: React.FC<Props> = ({}) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <div className="text-xl">
-              <a href="/">🐾</a>
+              <Link href="/">🐾</Link>
             </div>
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
