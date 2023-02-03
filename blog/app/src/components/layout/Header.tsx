@@ -6,11 +6,11 @@ const Header: React.FC<Props> = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const headerLinkList = [
     {
-      text: 'posts',
+      text: 'articles',
       link: '',
     },
     {
-      text: 'work',
+      text: 'dev',
       link: '',
     },
     {
@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({}) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <div className="text-xl">
-              <a href="">🐻</a>
+              <a href="/">🐾</a>
             </div>
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
