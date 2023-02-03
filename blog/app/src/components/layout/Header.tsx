@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({}) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <div className="text-xl">
-              <Link href="/">🐾</Link>
+              <Link href="/">🐻</Link>
             </div>
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
