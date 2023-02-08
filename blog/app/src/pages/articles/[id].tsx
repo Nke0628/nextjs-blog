@@ -5,6 +5,8 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from 'next'
+import Link from 'next/link'
+import Badge from '@/components/atoms/Badge'
 import ArticleTeplate from '@/components/organisms/ArticleTemplate'
 import { client } from '@/modules/client'
 import { article } from '@/types/type'
@@ -27,9 +29,13 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div className="mx-auto">
         <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
       </div>
-      {article.categories.map((categorie) => (
-        <p key={categorie.id}>{categorie.name}</p>
-      ))}
+      <div className="mt-5">
+        {article.categories.map((categorie) => (
+          <Link href="/" key={categorie.id}>
+            <Badge text={categorie.name}></Badge>
+          </Link>
+        ))}
+      </div>
     </main>
   )
 }
