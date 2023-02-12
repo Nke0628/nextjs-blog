@@ -8,10 +8,10 @@ type Props = {
 
 const ArticleCard: React.FC<Props> = ({ subTitle, title, footerText }) => {
   return (
-    <li className="rounded-lg bg-gray-800 px-6 py-4 h-full flex flex-col justify-between">
-      <div className="text-gray-400">{subTitle}</div>
-      <div className="text-2xl font-bold mt-10">{title}</div>
-      <div className="mt-10 text-right text-gray-400">{footerText}</div>
+    <li className="rounded-lg bg-gray-500 px-6 py-4 h-full flex flex-col justify-between">
+      <div className="text-white">{subTitle}</div>
+      <div className="text-white text-2xl font-bold mt-10">{title}</div>
+      <div className="mt-10 text-right text-white">{footerText}</div>
     </li>
   )
 }
