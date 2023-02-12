@@ -64,7 +64,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
             <a
               {...domNode.attribs}
               rel="noreferrer"
-              className="text-indigo-400 block px-1 py-2"
+              className="text-sky-500 block px-1 py-2"
             >
               {domToReact(domNode.children)}
             </a>
