@@ -17,8 +17,15 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
       if (domNode instanceof Element && domNode.name === 'h1') {
         return (
           <>
-            <h2 className="text-3xl mt-6">{domToReact(domNode.children)}</h2>
+            <h1 className="text-3xl mt-6">{domToReact(domNode.children)}</h1>
             <hr className="h-[0.5px] md:h-[0.1px] mt-2 mb-6 bg-gray-200 border-0 bg-gray-500"></hr>
+          </>
+        )
+      }
+      if (domNode instanceof Element && domNode.name === 'h2') {
+        return (
+          <>
+            <h2 className="text-xl mt-6">{domToReact(domNode.children)}</h2>
           </>
         )
       }
