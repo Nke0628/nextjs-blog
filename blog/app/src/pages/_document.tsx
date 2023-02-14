@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head />
-      <title>プログラミングブログ</title>
+      <title>Neke</title>
       <body>
         <Main />
         <NextScript />
