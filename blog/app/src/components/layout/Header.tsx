@@ -25,16 +25,12 @@ const Header: React.FC<Props> = ({}) => {
         <div className="flex justify-between items-center">
           <div className="flex">
             <div className="text-xl">
-              <Link href="/">🐻</Link>
+              <Link href="/">🐕</Link>
             </div>
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
                 {headerLinkList.map((headerLink, index) => (
-                  <a
-                    className="text-indigo-400"
-                    key={index}
-                    href={headerLink.link}
-                  >
+                  <a className="font-bold" key={index} href={headerLink.link}>
                     {headerLink.text}
                   </a>
                 ))}
@@ -88,7 +84,7 @@ const Header: React.FC<Props> = ({}) => {
             <nav className="">
               {headerLinkList.map((headerLink, index) => (
                 <a
-                  className="text-indigo-400 block px-1 py-2"
+                  className="font-bold block px-1 py-2"
                   key={index}
                   href={headerLink.link}
                 >
