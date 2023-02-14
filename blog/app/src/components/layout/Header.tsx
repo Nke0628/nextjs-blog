@@ -8,7 +8,7 @@ const Header: React.FC<Props> = ({}) => {
   const headerLinkList = [
     {
       text: 'articles',
-      link: '',
+      link: '/',
     },
     {
       text: 'dev',
@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({}) => {
     },
     {
       text: 'profile',
-      link: '',
+      link: '/profile',
     },
   ]
   return (
