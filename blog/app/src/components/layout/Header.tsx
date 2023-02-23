@@ -7,8 +7,8 @@ const Header: React.FC<Props> = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const headerLinkList = [
     {
-      text: 'articles',
-      link: '/',
+      text: 'categories',
+      link: '/categories',
     },
     {
       text: 'dev',
@@ -30,9 +30,13 @@ const Header: React.FC<Props> = ({}) => {
             <div className="hidden md:block">
               <nav className="ml-10 flex space-x-4">
                 {headerLinkList.map((headerLink, index) => (
-                  <a className="font-bold" key={index} href={headerLink.link}>
+                  <Link
+                    className="font-bold"
+                    key={index}
+                    href={headerLink.link}
+                  >
                     {headerLink.text}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -83,13 +87,13 @@ const Header: React.FC<Props> = ({}) => {
           <div className="md:hidden">
             <nav className="">
               {headerLinkList.map((headerLink, index) => (
-                <a
+                <Link
                   className="font-bold block px-1 py-2"
                   key={index}
                   href={headerLink.link}
                 >
                   {headerLink.text}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
