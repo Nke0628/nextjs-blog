@@ -15,7 +15,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }: Props) => {
   return (
     <>
-      <SubHeading text="profile"></SubHeading>
+      <SubHeading text="プロフィール"></SubHeading>
       <main className="py-8 md:w-3/5 mx-auto">
         <table className="w-full">
           <tbody className="">
