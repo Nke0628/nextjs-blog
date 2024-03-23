@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir src",
-    "lintfix": "yarn lint --ext .js,jsx,.ts,.tsx --fix",
+    "lint": "next lint",
+    "lintfix": "npm run lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
   "dependencies": {
@@ -15,8 +15,6 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
-    "eslint": "8.32.0",
-    "eslint-config-next": "13.1.4",
     "highlight.js": "^11.7.0",
     "html-react-parser": "^3.0.8",
     "microcms-js-sdk": "^2.3.2",
@@ -26,8 +24,14 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "autoprefixer": "^10.4.13",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
     "postcss": "^8.4.21",
     "prettier": "^2.8.3",
     "tailwindcss": "^3.2.4"

@@ -1,12 +1,10 @@
-import { Inter } from '@next/font/google'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
+
 import SubHeading from '@/components/layout/SubHeading'
 import ArticleCardList from '@/components/template/ArticleCardList'
 import { client } from '@/modules/client'
 import { articles } from '@/types/type'
-
-const inter = Inter({ subsets: ['latin'] })
 
 type Props = {
   articles: articles

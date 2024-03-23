@@ -1,18 +1,8 @@
-import { Inter } from '@next/font/google'
 import { InferGetStaticPropsType, NextPage } from 'next'
+
 import SubHeading from '@/components/layout/SubHeading'
-import { client } from '@/modules/client'
-import { articles } from '@/types/type'
 
-const inter = Inter({ subsets: ['latin'] })
-
-type Props = {
-  articles: articles
-}
-
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  articles,
-}: Props) => {
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({}) => {
   return (
     <>
       <SubHeading text="profile"></SubHeading>
@@ -66,11 +56,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }
 
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: 'articles' })
   return {
-    props: {
-      articles: data.contents,
-    },
+    props: {},
   }
 }
 

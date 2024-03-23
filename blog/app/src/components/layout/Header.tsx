@@ -1,9 +1,8 @@
-import Link from 'next/link'
 import React, { useState } from 'react'
 
-type Props = {}
+import Link from 'next/link'
 
-const Header: React.FC<Props> = ({}) => {
+const Header: React.FC = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const headerLinkList = [
     {

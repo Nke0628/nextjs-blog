@@ -1,10 +1,11 @@
+import React from 'react'
+
 import hilight from 'highlight.js'
 import parse, {
   Element,
   domToReact,
   HTMLReactParserOptions,
 } from 'html-react-parser'
-import React from 'react'
 import 'highlight.js/styles/hybrid.css'
 
 type Props = {
