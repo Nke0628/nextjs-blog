@@ -1,15 +1,8 @@
-import { Inter } from '@next/font/google'
 import { InferGetStaticPropsType, NextPage } from 'next'
 
 import SubHeading from '@/components/layout/SubHeading'
 
-const inter = Inter({ subsets: ['latin'] })
-
-type DevProps = {}
-
-const Dev: NextPage<
-  InferGetStaticPropsType<typeof getStaticProps>
-> = ({}: DevProps) => {
+const Dev: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({}) => {
   return (
     <>
       <SubHeading text="dev"></SubHeading>

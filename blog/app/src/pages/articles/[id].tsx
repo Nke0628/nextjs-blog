@@ -1,11 +1,6 @@
 import { ParsedUrlQuery } from 'querystring'
 
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from 'next'
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
 
 import Badge from '@/components/atoms/Badge'

@@ -1,4 +1,3 @@
-import { Inter } from '@next/font/google'
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 
@@ -7,9 +6,6 @@ import SubHeading from '@/components/layout/SubHeading'
 import ArticleCardList from '@/components/template/ArticleCardList'
 import { client } from '@/modules/client'
 import { articles } from '@/types/type'
-
-const inter = Inter({ subsets: ['latin'] })
-var hoge = 'tes'
 
 const PAGE_ARTICLE_LIMIT = 5
 

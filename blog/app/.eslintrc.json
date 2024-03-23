@@ -4,8 +4,14 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": ["import"],
-  "extends": ["next", "next/core-web-vitals", "prettier"],
+  "plugins": ["import", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {
