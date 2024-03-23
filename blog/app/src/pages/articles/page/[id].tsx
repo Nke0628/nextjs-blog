@@ -1,10 +1,10 @@
-import { Inter } from '@next/font/google'
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import Pagination from '@/components/atoms/Pagination'
 import SubHeading from '@/components/layout/SubHeading'
 import ArticleCardList from '@/components/template/ArticleCardList'
 import { client } from '@/modules/client'
 import { articles } from '@/types/type'
-import Pagination from '@/components/atoms/Pagination'
+import { Inter } from '@next/font/google'
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 
 const inter = Inter({ subsets: ['latin'] })
