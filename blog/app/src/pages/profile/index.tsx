@@ -26,7 +26,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   <a
                     href="https://github.com/Nke0628"
                     target="_blank"
-                    rel="noopener"
+                    rel="noreferrer"
                     className="text-sky-500"
                   >
                     GitHub
@@ -36,7 +36,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   <a
                     href="https://zenn.dev/nk0628"
                     target="_blank"
-                    rel="noopener"
+                    rel="noreferrer"
                     className="text-sky-500"
                   >
                     Zenn
