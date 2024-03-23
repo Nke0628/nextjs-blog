@@ -15,17 +15,33 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }: Props) => {
   return (
     <>
-      <SubHeading text="プロフィール"></SubHeading>
+      <SubHeading text="profile"></SubHeading>
       <main className="py-8 md:w-3/5 mx-auto">
         <table className="w-full">
           <tbody className="">
             <tr className="border-t-[1px]">
               <td className="font-bold">Account</td>
               <td className="p-8">
-                <a href="" className="text-sky-500">
-                  <p>準備中</p>
-                  <p>GitHub、Zenn</p>
-                </a>
+                <div>
+                  <a
+                    href="https://github.com/Nke0628"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sky-500"
+                  >
+                    GitHub
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="https://zenn.dev/nk0628"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sky-500"
+                  >
+                    Zenn
+                  </a>
+                </div>
               </td>
             </tr>
             <tr className="border-t-[1px]">
@@ -35,11 +51,11 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <tr className="border-t-[1px]">
               <td className="font-bold">About</td>
               <td className="p-8">
-                <p>PHP、Laravel、Typescript。</p>
+                <p>Typescript、PHP、Laravel</p>
                 <p>
-                  バックエンドがメインですが、このブログもNext.js(React)で書いてます。
+                  バックエンドがメインですが、このブログもNext.jsで書いてます。
                 </p>
-                <p>コードや設計が好き。</p>
+                <p>開発や設計が好き。</p>
               </td>
             </tr>
           </tbody>

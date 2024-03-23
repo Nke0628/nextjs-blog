@@ -7,12 +7,12 @@ const Header: React.FC<Props> = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const headerLinkList = [
     {
-      text: 'categories',
-      link: '/categories',
+      text: 'articles',
+      link: '/articles/page/1',
     },
     {
       text: 'dev',
-      link: '',
+      link: '/dev',
     },
     {
       text: 'profile',
