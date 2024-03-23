@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import ArticleCard from '@/components/organisms/ArticleCard'
 import { articles } from '@/types/type'
 

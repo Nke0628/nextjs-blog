@@ -1,8 +1,7 @@
 import { Inter } from '@next/font/google'
 import { InferGetStaticPropsType, NextPage } from 'next'
+
 import SubHeading from '@/components/layout/SubHeading'
-import { client } from '@/modules/client'
-import { articles } from '@/types/type'
 
 const inter = Inter({ subsets: ['latin'] })
 

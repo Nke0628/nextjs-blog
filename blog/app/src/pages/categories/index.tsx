@@ -1,6 +1,7 @@
 import { Inter } from '@next/font/google'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
+
 import Badge from '@/components/atoms/Badge'
 import SubHeading from '@/components/layout/SubHeading'
 import { client } from '@/modules/client'

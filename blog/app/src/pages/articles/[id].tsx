@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'querystring'
+
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -6,6 +7,7 @@ import {
   NextPage,
 } from 'next'
 import Link from 'next/link'
+
 import Badge from '@/components/atoms/Badge'
 import ArticleTeplate from '@/components/organisms/ArticleTemplate'
 import { client } from '@/modules/client'
