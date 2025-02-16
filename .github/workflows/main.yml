@@ -1,0 +1,31 @@
+# .github/workflows/main.yml
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ./blog/app
+        run: npm install
+
+      - name: Install Playwright Browsers # Playwrightのブラウザをインストール
+        working-directory: ./blog/app
+        run: npx playwright install chromium
+
+      - name: Run E2E tests
+        working-directory: ./blog/app
+        run: npm test # または yarn test
