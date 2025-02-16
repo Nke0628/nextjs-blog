@@ -1,5 +1,6 @@
 {
   "default": {
+    "format": ["summary", "html:cucumber-report.html"],
     "formatOptions": {
       "snippetInterface": "async-await"
     },

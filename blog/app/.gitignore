@@ -41,3 +41,6 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# cucumber
+cucumber-report.html
