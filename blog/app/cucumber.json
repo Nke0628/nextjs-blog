@@ -1,0 +1,11 @@
+{
+  "default": {
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "dryRun": false,
+    "paths": ["test/features/**/*.feature"],
+    "import": ["test/step_definitions/**/*.ts"],
+    "loader": ["ts-node/esm"]
+  }
+}
