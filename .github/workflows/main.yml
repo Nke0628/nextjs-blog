@@ -19,7 +19,9 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./blog/app
         run: npm install
 
       - name: Run E2E tests
+        working-directory: ./blog/app
         run: npm test # または yarn test
