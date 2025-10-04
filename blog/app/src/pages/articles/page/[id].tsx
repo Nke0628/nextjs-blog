@@ -7,7 +7,7 @@ import ArticleCardList from '@/components/template/ArticleCardList'
 import { client } from '@/modules/client'
 import { articles } from '@/types/type'
 
-const PAGE_ARTICLE_LIMIT = 5
+const PAGE_ARTICLE_LIMIT = 6
 
 type Props = {
   pageNum: number
