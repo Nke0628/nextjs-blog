@@ -7,6 +7,7 @@ import Badge from '@/components/atoms/Badge'
 import ArticleTeplate from '@/components/organisms/ArticleTemplate'
 import { client } from '@/modules/client'
 import { article } from '@/types/type'
+import { formatUTCtoJST } from '@/utils/date'
 
 type Props = {
   article: article
@@ -22,7 +23,9 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <main className="py-8 md:w-3/5 mx-auto">
       <h1 className="text-center text-3xl font-bold my-3 ">{article.title}</h1>
-      <p className="text-right mt-3 mb-9">{article.publishedAt}</p>
+      <p className="text-right mt-3 mb-9">
+        {formatUTCtoJST(article.publishedAt)}
+      </p>
       <div className="mx-auto">
         <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
       </div>
