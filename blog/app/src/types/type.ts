@@ -14,3 +14,20 @@ export type article = {
 }
 
 export type articles = article[]
+
+export type technology = {
+  name: string
+  color: string
+}
+
+export type project = {
+  id: string
+  title: string
+  description: string
+  technologies: technology[]
+  image?: string
+  url?: string
+  githubUrl?: string
+}
+
+export type projects = project[]
