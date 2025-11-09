@@ -59,6 +59,15 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
           </>
         )
       }
+      if (domNode instanceof Element && domNode.name === 'aside') {
+        return (
+          <>
+            <aside className="p-4 my-4 border-l-4 border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20">
+              {domToReact(domNode.children, options)}
+            </aside>
+          </>
+        )
+      }
       if (domNode instanceof Element && domNode.name === 'a') {
         return (
           <>
