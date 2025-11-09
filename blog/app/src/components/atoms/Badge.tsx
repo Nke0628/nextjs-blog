@@ -6,8 +6,8 @@ type Props = {
 
 const Badge: React.FC<Props> = ({ text }) => {
   return (
-    <span className="m-1 inline-flex items-center rounded-full bg-gradient-to-r from-primary-500 to-primary-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer">
-      # {text}
+    <span className="m-1 inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+      {text}
     </span>
   )
 }
