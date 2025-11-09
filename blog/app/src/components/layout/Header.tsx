@@ -29,7 +29,7 @@ const Header: React.FC = ({}) => {
             <div className="flex items-center">
               <Link
                 href="/"
-                className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200"
+                className="flex items-center gap-2 text-xl md:text-2xl font-logo font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200 tracking-tight"
               >
                 <Logo />
                 <span>DevMane</span>
