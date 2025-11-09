@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import Link from 'next/link'
 
+import Logo from '@/components/atoms/Logo'
 import ThemeToggle from '@/components/atoms/ThemeToggle'
 
 const Header: React.FC = ({}) => {
@@ -28,9 +29,10 @@ const Header: React.FC = ({}) => {
             <div className="flex items-center">
               <Link
                 href="/"
-                className="text-3xl hover:scale-110 transition-transform duration-200"
+                className="flex items-center gap-2 text-xl md:text-2xl font-logo font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200 tracking-tight"
               >
-                🐕
+                <Logo />
+                <span>DevMane</span>
               </Link>
               <div className="hidden md:block ml-10">
                 <nav className="flex space-x-8">
@@ -38,10 +40,9 @@ const Header: React.FC = ({}) => {
                     <Link
                       key={index}
                       href={headerLink.link}
-                      className="relative font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 group"
+                      className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                     >
                       {headerLink.text}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
                     </Link>
                   ))}
                 </nav>
@@ -58,48 +59,48 @@ const Header: React.FC = ({}) => {
                   aria-label="Toggle menu"
                 >
                   {!isOpen ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
-              </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  )}
+                </button>
               </div>
             </div>
           </div>
           {isOpen && (
             <div className="md:hidden pb-4 animate-slide-down">
-              <nav className="flex flex-col space-y-2">
+              <nav className="flex flex-col space-y-1">
                 {headerLinkList.map((headerLink, index) => (
                   <Link
                     key={index}
                     href={headerLink.link}
-                    className="font-semibold px-4 py-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+                    className="text-sm font-medium px-4 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
                     onClick={() => setIsOpen(false)}
                   >
                     {headerLink.text}

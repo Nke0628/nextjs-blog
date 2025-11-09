@@ -33,6 +33,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         display: ['Poppins', 'sans-serif'],
+        logo: ['Space Grotesk', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

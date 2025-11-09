@@ -4,9 +4,8 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head>
-        <title>Nake</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <meta name="description" content="Nake's Blog" />
+        <meta name="description" content="DevMane - モダンな開発者ブログ" />
       </Head>
       <body>
         <Main />
