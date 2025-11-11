@@ -13,6 +13,15 @@ type Props = {
 }
 
 const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
+  // デバッグ: asideタグの確認
+  if (contentHtml.includes('aside')) {
+    console.log('=== DEBUG: HTML content with aside ===')
+    console.log(contentHtml.substring(
+      Math.max(0, contentHtml.indexOf('aside') - 50),
+      Math.min(contentHtml.length, contentHtml.indexOf('aside') + 200)
+    ))
+  }
+
   const options: HTMLReactParserOptions = {
     replace: (domNode) => {
       if (domNode instanceof Element && domNode.name === 'h1') {
