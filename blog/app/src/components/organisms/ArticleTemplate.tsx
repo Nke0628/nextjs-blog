@@ -13,11 +13,21 @@ type Props = {
 }
 
 const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
-  // HTMLエンティティをデコードする関数
+  // HTMLエンティティをデコードする関数（SSR対応）
   const decodeHtmlEntities = (html: string): string => {
-    const txt = document.createElement('textarea')
-    txt.innerHTML = html
-    return txt.value
+    const entities: { [key: string]: string } = {
+      '&amp;': '&',
+      '&lt;': '<',
+      '&gt;': '>',
+      '&quot;': '"',
+      '&#39;': "'",
+      '&#x27;': "'",
+      '&#x2F;': '/',
+    }
+    return html.replace(
+      /&(?:amp|lt|gt|quot|#39|#x27|#x2F);/g,
+      (match) => entities[match] || match,
+    )
   }
 
   // HTMLエンティティをデコード
