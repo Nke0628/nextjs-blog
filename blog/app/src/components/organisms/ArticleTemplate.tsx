@@ -111,10 +111,17 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
           'python',
           'php',
         ]
-        const hilightCode = hilight.highlightAuto(
-          domToReact(domNode.children) as string,
-          languageSubset,
-        )
+        // テキストノードからテキストを直接抽出
+        const codeText = domNode.children
+          .map((child: any) => {
+            if (child.type === 'text') {
+              return child.data
+            }
+            return ''
+          })
+          .join('')
+
+        const hilightCode = hilight.highlightAuto(codeText, languageSubset)
         const dom = parse(hilightCode.value)
         return <code className="hljs">{dom}</code>
       }
