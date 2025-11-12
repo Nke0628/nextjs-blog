@@ -3,6 +3,7 @@ import React from 'react'
 import hilight from 'highlight.js'
 import parse, {
   Element,
+  Text,
   domToReact,
   HTMLReactParserOptions,
 } from 'html-react-parser'
@@ -13,6 +14,17 @@ type Props = {
 }
 
 const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
+  // asideタグのみをデコードする関数（codeタグ内は保護）
+  const decodeAsideTags = (html: string): string => {
+    // &lt;aside&gt; と &lt;/aside&gt; だけを <aside> と </aside> にデコード
+    return html
+      .replace(/&lt;aside&gt;/g, '<aside>')
+      .replace(/&lt;\/aside&gt;/g, '</aside>')
+  }
+
+  // asideタグをデコード
+  const decodedHtml = decodeAsideTags(contentHtml)
+
   const options: HTMLReactParserOptions = {
     replace: (domNode) => {
       if (domNode instanceof Element && domNode.name === 'h1') {
@@ -59,13 +71,22 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
           </>
         )
       }
+      if (domNode instanceof Element && domNode.name === 'aside') {
+        return (
+          <>
+            <aside className="p-4 my-4 border-l-4 border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20">
+              {domToReact(domNode.children, options)}
+            </aside>
+          </>
+        )
+      }
       if (domNode instanceof Element && domNode.name === 'a') {
         return (
           <>
             <a
               {...domNode.attribs}
               rel="noreferrer"
-              className="text-sky-500 px-1 py-2"
+              className="text-sky-500 px-1 py-2 break-words"
             >
               {domToReact(domNode.children)}
             </a>
@@ -82,16 +103,23 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
           'python',
           'php',
         ]
-        const hilightCode = hilight.highlightAuto(
-          domToReact(domNode.children) as string,
-          languageSubset,
-        )
+        // テキストノードからテキストを直接抽出
+        const codeText = domNode.children
+          .map((child) => {
+            if (child instanceof Text) {
+              return child.data
+            }
+            return ''
+          })
+          .join('')
+
+        const hilightCode = hilight.highlightAuto(codeText, languageSubset)
         const dom = parse(hilightCode.value)
         return <code className="hljs">{dom}</code>
       }
     },
   }
-  return <>{parse(contentHtml, options)}</>
+  return <>{parse(decodedHtml, options)}</>
 }
 
 export default ArticleTeplate
