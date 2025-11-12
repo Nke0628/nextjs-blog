@@ -13,14 +13,15 @@ type Props = {
 }
 
 const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
-  // デバッグ: asideタグの確認
-  if (contentHtml.includes('aside')) {
-    console.log('=== DEBUG: HTML content with aside ===')
-    console.log(contentHtml.substring(
-      Math.max(0, contentHtml.indexOf('aside') - 50),
-      Math.min(contentHtml.length, contentHtml.indexOf('aside') + 200)
-    ))
+  // HTMLエンティティをデコードする関数
+  const decodeHtmlEntities = (html: string): string => {
+    const txt = document.createElement('textarea')
+    txt.innerHTML = html
+    return txt.value
   }
+
+  // HTMLエンティティをデコード
+  const decodedHtml = decodeHtmlEntities(contentHtml)
 
   const options: HTMLReactParserOptions = {
     replace: (domNode) => {
@@ -109,7 +110,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
       }
     },
   }
-  return <>{parse(contentHtml, options)}</>
+  return <>{parse(decodedHtml, options)}</>
 }
 
 export default ArticleTeplate
