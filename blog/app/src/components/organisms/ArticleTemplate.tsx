@@ -3,6 +3,7 @@ import React from 'react'
 import hilight from 'highlight.js'
 import parse, {
   Element,
+  Text,
   domToReact,
   HTMLReactParserOptions,
 } from 'html-react-parser'
@@ -113,8 +114,8 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         ]
         // テキストノードからテキストを直接抽出
         const codeText = domNode.children
-          .map((child: any) => {
-            if (child.type === 'text') {
+          .map((child) => {
+            if (child instanceof Text) {
               return child.data
             }
             return ''
