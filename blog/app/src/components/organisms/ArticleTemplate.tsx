@@ -14,25 +14,16 @@ type Props = {
 }
 
 const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
-  // HTMLエンティティをデコードする関数（SSR対応）
-  const decodeHtmlEntities = (html: string): string => {
-    const entities: { [key: string]: string } = {
-      '&amp;': '&',
-      '&lt;': '<',
-      '&gt;': '>',
-      '&quot;': '"',
-      '&#39;': "'",
-      '&#x27;': "'",
-      '&#x2F;': '/',
-    }
-    return html.replace(
-      /&(?:amp|lt|gt|quot|#39|#x27|#x2F);/g,
-      (match) => entities[match] || match,
-    )
+  // asideタグのみをデコードする関数（codeタグ内は保護）
+  const decodeAsideTags = (html: string): string => {
+    // &lt;aside&gt; と &lt;/aside&gt; だけを <aside> と </aside> にデコード
+    return html
+      .replace(/&lt;aside&gt;/g, '<aside>')
+      .replace(/&lt;\/aside&gt;/g, '</aside>')
   }
 
-  // HTMLエンティティをデコード
-  const decodedHtml = decodeHtmlEntities(contentHtml)
+  // asideタグをデコード
+  const decodedHtml = decodeAsideTags(contentHtml)
 
   const options: HTMLReactParserOptions = {
     replace: (domNode) => {
