@@ -17,6 +17,10 @@ const Header: React.FC = ({}) => {
       link: '/tags',
     },
     {
+      text: 'evaluation',
+      link: '/evaluation',
+    },
+    {
       text: 'dev',
       link: '/dev',
     },
