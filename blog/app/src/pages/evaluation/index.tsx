@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, memo } from 'react'
+import { useState, useMemo, useCallback, memo, useEffect } from 'react'
 import Container from '@/components/layout/Container'
 import SubHeading from '@/components/layout/SubHeading'
 
@@ -168,7 +168,7 @@ const GridCell = memo(
 GridCell.displayName = 'GridCell'
 
 const EvaluationPage = () => {
-  const [employees, setEmployees] = useState<Employee[]>(() => generateEmployees(1000))
+  const [employees, setEmployees] = useState<Employee[]>([])
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -176,6 +176,11 @@ const EvaluationPage = () => {
   const [selectedScore, setSelectedScore] = useState<number | 'all'>('all')
 
   const scores = [5, 4, 3, 2, 1]
+
+  // クライアント側でのみデータを生成（ハイドレーションエラー回避）
+  useEffect(() => {
+    setEmployees(generateEmployees(1000))
+  }, [])
 
   // 部署リストを取得
   const departments = useMemo(() => {
