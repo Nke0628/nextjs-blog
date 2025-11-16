@@ -142,8 +142,8 @@ const GridCell = memo(
     onEmployeeClick: (emp: Employee) => void
   }) => {
     return (
-      <div className="p-3 min-h-[100px] bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
-        <div className="flex flex-wrap gap-2">
+      <div className="w-56 p-3 min-h-[100px] bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors flex-shrink-0">
+        <div className="flex flex-wrap gap-2 w-full">
           {employees.map((emp) => (
             <button
               key={emp.id}
@@ -363,13 +363,13 @@ const EvaluationPage = () => {
             <div className="min-w-max">
               {/* ヘッダー行 */}
               <div className="flex sticky top-0 z-10 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border-b-2 border-gray-300 dark:border-gray-600">
-                <div className="w-32 p-4 font-bold sticky left-0 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border-r-2 border-gray-300 dark:border-gray-600 flex items-center justify-center">
+                <div className="w-32 p-4 font-bold sticky left-0 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border-r-2 border-gray-300 dark:border-gray-600 flex items-center justify-center flex-shrink-0">
                   <span className="text-lg dark:text-white">評価</span>
                 </div>
                 {departments.map((dept) => (
                   <div
                     key={dept}
-                    className="w-56 p-4 font-bold text-center border-r border-gray-300 dark:border-gray-600"
+                    className="w-56 p-4 font-bold text-center border-r border-gray-300 dark:border-gray-600 flex-shrink-0"
                   >
                     <div className="dark:text-white text-sm">{dept}</div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -383,7 +383,7 @@ const EvaluationPage = () => {
               {scores.map((score) => (
                 <div key={score} className="flex">
                   {/* 点数列 */}
-                  <div className="w-32 p-4 font-bold text-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-r-2 border-b border-gray-300 dark:border-gray-600 flex items-center justify-center sticky left-0 z-10">
+                  <div className="w-32 p-4 font-bold text-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 border-r-2 border-b border-gray-300 dark:border-gray-600 flex items-center justify-center sticky left-0 z-10 flex-shrink-0">
                     <div>
                       <div className="text-3xl dark:text-white">{score}</div>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">点</div>
