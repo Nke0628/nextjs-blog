@@ -6,12 +6,14 @@ interface PaginationProps {
   currentPage: number
   totalCount: number
   pageSize: number
+  basePath?: string
 }
 
 const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalCount,
   pageSize,
+  basePath = '/articles/page',
 }) => {
   const totalPages = Math.ceil(totalCount / pageSize)
 
@@ -19,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({
     <div className="flex justify-between items-center gap-4">
       <div>
         {currentPage != 1 && (
-          <Link href={`/articles/page/${Number(currentPage) - 1}`}>
+          <Link href={`${basePath}/${Number(currentPage) - 1}`}>
             <button className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 py-2 px-4 rounded-lg inline-flex items-center text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors duration-200">
               <span>← 前へ</span>
             </button>
@@ -31,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
       <div>
         {currentPage != totalPages && (
-          <Link href={`/articles/page/${Number(currentPage) + 1}`}>
+          <Link href={`${basePath}/${Number(currentPage) + 1}`}>
             <button className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 py-2 px-4 rounded-lg inline-flex items-center text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors duration-200">
               <span>次へ →</span>
             </button>
