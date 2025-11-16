@@ -1,9 +1,14 @@
 export type categorie = {
   id: string
   name: string
+  slug?: string
+  description?: string
 }
 
 export type categories = categorie[]
+
+export type tag = categorie
+export type tags = categories
 
 export type article = {
   id: string

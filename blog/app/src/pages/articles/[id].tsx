@@ -3,7 +3,6 @@ import { ParsedUrlQuery } from 'querystring'
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
 
-import Badge from '@/components/atoms/Badge'
 import ArticleTeplate from '@/components/organisms/ArticleTemplate'
 import { client } from '@/modules/client'
 import { article } from '@/types/type'
@@ -29,10 +28,16 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div className="mx-auto">
         <ArticleTeplate contentHtml={article.content}></ArticleTeplate>
       </div>
-      <div className="mt-5">
-        {article.categories.map((categorie) => (
-          <Link href="/" key={categorie.id}>
-            <Badge text={categorie.name}></Badge>
+      <div className="mt-8 flex flex-wrap gap-2">
+        {article.categories.map((tag) => (
+          <Link
+            href={`/tags/${tag.slug}/page/1`}
+            key={tag.id}
+            className="group inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 transition-all duration-200"
+          >
+            <span className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+              #{tag.name}
+            </span>
           </Link>
         ))}
       </div>

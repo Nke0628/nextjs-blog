@@ -13,6 +13,10 @@ const Header: React.FC = ({}) => {
       link: '/articles/page/1',
     },
     {
+      text: 'tags',
+      link: '/tags',
+    },
+    {
       text: 'dev',
       link: '/dev',
     },
