@@ -1,19 +1,9 @@
 import { useState, useMemo, useCallback, memo, useEffect } from 'react'
 import Container from '@/components/layout/Container'
 import SubHeading from '@/components/layout/SubHeading'
+import { fetchEmployees, type Employee } from '@/utils/api'
 
-// 型定義
-type Employee = {
-  id: string
-  name: string
-  department: string
-  score: number
-  avatar: string
-  position: string
-  joinDate: string
-}
-
-// 大規模テストデータ生成
+// 大規模テストデータ生成（削除予定 - APIから取得）
 const generateEmployees = (count: number): Employee[] => {
   const departments = [
     '営業部',
@@ -174,12 +164,28 @@ const EvaluationPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState<string>('all')
   const [selectedScore, setSelectedScore] = useState<number | 'all'>('all')
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const scores = [5, 4, 3, 2, 1]
 
-  // クライアント側でのみデータを生成（ハイドレーションエラー回避）
+  // APIから従業員データを取得
   useEffect(() => {
-    setEmployees(generateEmployees(1000))
+    const loadEmployees = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
+        const data = await fetchEmployees()
+        setEmployees(data)
+      } catch (err) {
+        console.error('Failed to fetch employees:', err)
+        setError('従業員データの取得に失敗しました')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadEmployees()
   }, [])
 
   // 部署リストを取得
@@ -271,6 +277,45 @@ const EvaluationPage = () => {
     setSelectedDepartment('all')
     setSelectedScore('all')
   }, [])
+
+  // ローディング中
+  if (isLoading) {
+    return (
+      <Container>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+              従業員データを読み込んでいます...
+            </p>
+          </div>
+        </div>
+      </Container>
+    )
+  }
+
+  // エラー発生時
+  if (error) {
+    return (
+      <Container>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center max-w-md">
+            <div className="text-6xl mb-4">⚠️</div>
+            <h2 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-2">
+              エラーが発生しました
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              再読み込み
+            </button>
+          </div>
+        </div>
+      </Container>
+    )
+  }
 
   return (
     <Container>
