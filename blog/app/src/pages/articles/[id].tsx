@@ -29,12 +29,14 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <span className="text-sm font-medium text-yellow-800 dark:text-yellow-200">
               プレビューモード中
             </span>
-            <a
-              href="/api/exit-preview"
-              className="text-xs font-medium text-yellow-700 dark:text-yellow-300 underline hover:text-yellow-900 dark:hover:text-yellow-100"
+            <button
+              onClick={() => {
+                window.location.href = '/api/exit-preview'
+              }}
+              className="text-xs font-medium text-yellow-700 dark:text-yellow-300 underline hover:text-yellow-900 dark:hover:text-yellow-100 cursor-pointer"
             >
               プレビューを終了
-            </a>
+            </button>
           </div>
         </div>
       )}
