@@ -36,3 +36,8 @@ export type project = {
 }
 
 export type projects = project[]
+
+export type PreviewData = {
+  contentId: string
+  draftKey: string
+}
