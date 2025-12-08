@@ -156,7 +156,10 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }
 
 export const getStaticPaths = async () => {
-  const repos = await client.get({ endpoint: 'articles' })
+  const repos = await client.get({
+    endpoint: 'articles',
+    queries: { limit: 0 },
+  })
 
   const range = (start: number, end: number) =>
     [...Array(end - start + 1)].map((_, i) => start + i)
@@ -165,7 +168,7 @@ export const getStaticPaths = async () => {
     (repo) => `/articles/page/${repo}`,
   )
 
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
