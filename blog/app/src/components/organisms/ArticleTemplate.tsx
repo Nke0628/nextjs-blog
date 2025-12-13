@@ -86,10 +86,12 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         )
       }
       if (domNode instanceof Element && domNode.name === 'a') {
+        // style属性を除外（Reactはstyleをオブジェクトとして期待するため）
+        const { style, class: className, ...safeAttribs } = domNode.attribs
         return (
           <>
             <a
-              {...domNode.attribs}
+              {...safeAttribs}
               rel="noreferrer"
               className="text-sky-500 px-1 py-2 break-words"
             >
