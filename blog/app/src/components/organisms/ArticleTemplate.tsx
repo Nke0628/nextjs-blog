@@ -6,6 +6,7 @@ import parse, {
   Text,
   domToReact,
   HTMLReactParserOptions,
+  DOMNode,
 } from 'html-react-parser'
 import 'highlight.js/styles/hybrid.css'
 
@@ -30,7 +31,9 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
       if (domNode instanceof Element && domNode.name === 'h1') {
         return (
           <>
-            <h1 className="text-3xl mt-6">{domToReact(domNode.children)}</h1>
+            <h1 className="text-3xl mt-6">
+              {domToReact(domNode.children as DOMNode[], options)}
+            </h1>
             <hr className="h-[0.5px] md:h-[0.1px] mt-2 mb-6 bg-gray-200 border-0 bg-gray-500"></hr>
           </>
         )
@@ -38,7 +41,9 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
       if (domNode instanceof Element && domNode.name === 'h2') {
         return (
           <>
-            <h2 className="text-xl mt-6">{domToReact(domNode.children)}</h2>
+            <h2 className="text-xl mt-6">
+              {domToReact(domNode.children as DOMNode[], options)}
+            </h2>
           </>
         )
       }
@@ -46,7 +51,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         return (
           <>
             <ul className="py-2 px-5 list-disc">
-              {domToReact(domNode.children, options)}
+              {domToReact(domNode.children as DOMNode[], options)}
             </ul>
           </>
         )
@@ -55,7 +60,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         return (
           <>
             <ul className="py-2 px-5 list-decimal">
-              {domToReact(domNode.children, options)}
+              {domToReact(domNode.children as DOMNode[], options)}
             </ul>
           </>
         )
@@ -65,7 +70,7 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
           <>
             <blockquote className="p-4 my-4 border-l-4 border-gray-500 bg-gray-200 dark:border-gray-500 dark:bg-gray-800">
               <p className="font-medium leading-relaxed text-gray-700 dark:text-white">
-                {domToReact(domNode.children)}
+                {domToReact(domNode.children as DOMNode[], options)}
               </p>
             </blockquote>
           </>
@@ -75,20 +80,22 @@ const ArticleTeplate: React.FC<Props> = ({ contentHtml }) => {
         return (
           <>
             <aside className="p-4 my-4 border-l-4 border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20">
-              {domToReact(domNode.children, options)}
+              {domToReact(domNode.children as DOMNode[], options)}
             </aside>
           </>
         )
       }
       if (domNode instanceof Element && domNode.name === 'a') {
+        // style属性を除外（Reactはstyleをオブジェクトとして期待するため）
+        const { style, class: className, ...safeAttribs } = domNode.attribs
         return (
           <>
             <a
-              {...domNode.attribs}
+              {...safeAttribs}
               rel="noreferrer"
               className="text-sky-500 px-1 py-2 break-words"
             >
-              {domToReact(domNode.children)}
+              {domToReact(domNode.children as DOMNode[], options)}
             </a>
           </>
         )

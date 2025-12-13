@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import { useRouter } from 'next/router'
 
 import Pagination from '@/components/atoms/Pagination'
@@ -13,8 +12,12 @@ import { articles } from '@/types/type'
 
 const PAGE_ARTICLE_LIMIT = 6
 
+type Params = {
+  id: string | string[]
+}
+
 type Props = {
-  pageNum: number
+  pageNum: string | string[]
   totalCount: number
   articles: articles
 }
@@ -97,7 +100,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         {isSearchMode && (
           <div className="mb-6 px-4 md:px-0 flex items-center justify-between">
             <div className="text-sm text-gray-600 dark:text-gray-400">
-              <span className="font-semibold">&quot;{searchQuery}&quot;</span> の検索結果:{' '}
+              <span className="font-semibold">&quot;{searchQuery}&quot;</span>{' '}
+              の検索結果:{' '}
               <span className="font-semibold">{articles.length}</span> 件
             </div>
             <button
@@ -119,7 +123,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             {!isSearchMode && (
               <div className="mt-10">
                 <Pagination
-                  currentPage={pageNum}
+                  currentPage={
+                    typeof pageNum === 'string'
+                      ? parseInt(pageNum, 10)
+                      : pageNum[0]
+                      ? parseInt(pageNum[0], 10)
+                      : 1
+                  }
                   totalCount={totalCount}
                   pageSize={PAGE_ARTICLE_LIMIT}
                 />
@@ -174,7 +184,10 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const pageNum = params!.id
+  const pageNum =
+    typeof params!.id === 'string'
+      ? parseInt(params!.id, 10)
+      : parseInt(params!.id[0], 10)
   const data = await client.get({
     endpoint: 'articles',
     queries: {
@@ -184,7 +197,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   })
   return {
     props: {
-      pageNum,
+      pageNum: params!.id,
       totalCount: data.totalCount,
       articles: data.contents,
     },
