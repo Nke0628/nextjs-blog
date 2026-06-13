@@ -56,7 +56,7 @@ const Header: React.FC = ({}) => {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <LottieIcon src={DOG_LOTTIE_SRC} className="w-24 h-24 -mr-7" />
+              <LottieIcon src={DOG_LOTTIE_SRC} className="w-24 h-14 -mr-7" />
               <ThemeToggle />
               <div className="md:hidden">
                 <button
