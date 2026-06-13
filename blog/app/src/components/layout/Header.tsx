@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 
 import Link from 'next/link'
 
+import LottieIcon from '@/components/atoms/LottieIcon'
 import Logo from '@/components/atoms/Logo'
 import ThemeToggle from '@/components/atoms/ThemeToggle'
+
+const DOG_LOTTIE_SRC = '/dog.lottie'
 
 const Header: React.FC = ({}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -53,6 +56,7 @@ const Header: React.FC = ({}) => {
               </div>
             </div>
             <div className="flex items-center gap-4">
+              <LottieIcon src={DOG_LOTTIE_SRC} className="w-24 h-24 -mr-7" />
               <ThemeToggle />
               <div className="md:hidden">
                 <button

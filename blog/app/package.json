@@ -11,6 +11,7 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.19.4",
     "@next/font": "13.1.4",
     "@types/node": "18.11.18",
     "@types/react": "^19.2.7",
