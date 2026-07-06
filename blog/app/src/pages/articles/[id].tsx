@@ -40,7 +40,7 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </div>
         </div>
       )}
-      <main className="py-8 md:w-3/5 mx-auto">
+      <main className="py-8 w-full md:w-3/5 mx-auto">
         <h1 className="text-center text-3xl font-bold my-3 ">{article.title}</h1>
         <p className="text-right mt-3 mb-9 font-mono text-sm text-ink-400 dark:text-ink-400">
           {formatUTCtoJST(article.publishedAt)}
