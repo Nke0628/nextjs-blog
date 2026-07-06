@@ -9,6 +9,9 @@ interface PaginationProps {
   basePath?: string
 }
 
+const buttonClass =
+  'font-mono text-sm inline-flex items-center gap-2 rounded-md border border-ink-300 dark:border-ink-700 hover:border-primary-400 dark:hover:border-primary-400/60 bg-white/60 dark:bg-ink-900/60 hover:shadow-glow py-2 px-4 text-ink-600 dark:text-ink-300 hover:text-primary-700 dark:hover:text-primary-300 transition-all duration-300'
+
 const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalCount,
@@ -22,20 +25,26 @@ const Pagination: React.FC<PaginationProps> = ({
       <div>
         {currentPage != 1 && (
           <Link href={`${basePath}/${Number(currentPage) - 1}`}>
-            <button className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 py-2 px-4 rounded-lg inline-flex items-center text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors duration-200">
-              <span>← 前へ</span>
+            <button className={buttonClass}>
+              <span>←</span>
+              <span>前へ</span>
             </button>
           </Link>
         )}
       </div>
-      <div className="text-xs text-gray-500 dark:text-gray-500">
-        {currentPage} / {totalPages}
+      <div className="font-mono text-xs text-ink-400 dark:text-ink-400">
+        <span className="text-primary-600 dark:text-primary-400">
+          {currentPage}
+        </span>
+        <span className="mx-1">/</span>
+        {totalPages}
       </div>
       <div>
         {currentPage != totalPages && (
           <Link href={`${basePath}/${Number(currentPage) + 1}`}>
-            <button className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700 py-2 px-4 rounded-lg inline-flex items-center text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors duration-200">
-              <span>次へ →</span>
+            <button className={buttonClass}>
+              <span>次へ</span>
+              <span>→</span>
             </button>
           </Link>
         )}

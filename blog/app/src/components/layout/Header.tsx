@@ -30,25 +30,35 @@ const Header: React.FC = ({}) => {
   ]
   return (
     <>
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/85 dark:bg-ink-950/85 border-b border-ink-200 dark:border-ink-800">
+        {/* 上端のアクセントライン */}
+        <div className="h-[2px] w-full bg-gradient-to-r from-primary-500 via-primary-300 to-accent-500" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <Link
                 href="/"
-                className="flex items-center gap-2 text-xl md:text-2xl font-logo font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200 tracking-tight"
+                className="flex items-center gap-2 text-xl md:text-2xl font-logo font-bold text-ink-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-300 transition-colors duration-200 tracking-tight"
               >
                 <Logo />
-                <span>DevMane</span>
+                <span>
+                  DevMane
+                  <span className="text-primary-500 dark:text-primary-400 animate-blink">
+                    _
+                  </span>
+                </span>
               </Link>
               <div className="hidden md:block ml-10">
-                <nav className="flex space-x-8">
+                <nav className="flex space-x-6 font-mono text-sm">
                   {headerLinkList.map((headerLink, index) => (
                     <Link
                       key={index}
                       href={headerLink.link}
-                      className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                      className="group text-ink-500 dark:text-ink-300 hover:text-ink-900 dark:hover:text-white transition-colors duration-200"
                     >
+                      <span className="text-primary-500 dark:text-primary-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                        /
+                      </span>
                       {headerLink.text}
                     </Link>
                   ))}
@@ -63,7 +73,7 @@ const Header: React.FC = ({}) => {
                   onClick={() => {
                     setIsOpen(!isOpen)
                   }}
-                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="p-2 rounded-md border border-transparent hover:border-ink-300 dark:hover:border-ink-700 hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors duration-200"
                   aria-label="Toggle menu"
                 >
                   {!isOpen ? (
@@ -103,14 +113,17 @@ const Header: React.FC = ({}) => {
           </div>
           {isOpen && (
             <div className="md:hidden pb-4 animate-slide-down">
-              <nav className="flex flex-col space-y-1">
+              <nav className="flex flex-col space-y-1 font-mono text-sm">
                 {headerLinkList.map((headerLink, index) => (
                   <Link
                     key={index}
                     href={headerLink.link}
-                    className="text-sm font-medium px-4 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+                    className="px-4 py-2 rounded-md text-ink-500 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 hover:text-ink-900 dark:hover:text-white transition-all duration-200"
                     onClick={() => setIsOpen(false)}
                   >
+                    <span className="text-primary-500 dark:text-primary-400">
+                      /
+                    </span>
                     {headerLink.text}
                   </Link>
                 ))}

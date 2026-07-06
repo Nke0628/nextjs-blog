@@ -42,7 +42,7 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       )}
       <main className="py-8 md:w-3/5 mx-auto">
         <h1 className="text-center text-3xl font-bold my-3 ">{article.title}</h1>
-        <p className="text-right mt-3 mb-9">
+        <p className="text-right mt-3 mb-9 font-mono text-sm text-ink-400 dark:text-ink-400">
           {formatUTCtoJST(article.publishedAt)}
         </p>
         <div className="mx-auto">
@@ -53,10 +53,13 @@ const ArticlesId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Link
               href={`/tags/${tag.slug}/page/1`}
               key={tag.id}
-              className="group inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 transition-all duration-200"
+              className="group inline-flex items-center rounded-md border border-ink-300 dark:border-ink-700 bg-white/60 dark:bg-ink-900/60 hover:border-primary-400 dark:hover:border-primary-400/60 hover:shadow-glow px-4 py-2 transition-all duration-200"
             >
-              <span className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100">
-                #{tag.name}
+              <span className="font-mono text-xs text-ink-600 dark:text-ink-300 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">
+                <span className="text-primary-500 dark:text-primary-400 mr-0.5">
+                  #
+                </span>
+                {tag.name}
               </span>
             </Link>
           ))}

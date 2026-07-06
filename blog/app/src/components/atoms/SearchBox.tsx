@@ -23,17 +23,23 @@ const SearchBox: React.FC<Props> = ({
   return (
     <form onSubmit={handleSubmit} className={`relative ${className}`}>
       <div className="relative">
+        <span
+          aria-hidden="true"
+          className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-sm text-primary-500 dark:text-primary-400 pointer-events-none"
+        >
+          /
+        </span>
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-4 py-2 pr-10 text-sm bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
+          className="w-full pl-9 pr-10 py-2.5 font-mono text-sm bg-white/70 dark:bg-ink-900/70 backdrop-blur-sm border border-ink-300 dark:border-ink-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent focus:shadow-glow text-ink-900 dark:text-white placeholder-ink-400 dark:placeholder-ink-500 transition-all duration-200"
           aria-label="記事検索"
         />
         <button
           type="submit"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-ink-400 dark:text-ink-400 hover:text-primary-600 dark:hover:text-primary-300 transition-colors duration-200"
           aria-label="検索"
         >
           <svg
