@@ -1,3 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --fg: #111827;
+  --grid-size: 32px;
+}
+
+.dark {
+  --bg: #0a0f1a;
+  --fg: #e7ecf1;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
+body {
+  color: var(--fg);
+  background-color: var(--bg);
+  min-height: 100vh;
+  font-feature-settings: 'palt';
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+}
+
+/* テキスト選択 — ネオンシアン */
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: inherit;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a3648;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* ブループリント風グリッド背景 */
+.bg-blueprint {
+  background-image: linear-gradient(
+      rgba(8, 145, 178, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.05) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+.dark .bg-blueprint {
+  background-image: linear-gradient(
+      rgba(34, 211, 238, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.045) 1px, transparent 1px);
+}
+
+/* フォーカスリング */
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}

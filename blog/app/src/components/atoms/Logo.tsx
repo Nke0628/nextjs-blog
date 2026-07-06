@@ -14,16 +14,16 @@ const Logo: React.FC = () => {
           <stop offset="0%" className="text-primary-500">
             <animate
               attributeName="stop-color"
-              values="#3b82f6;#8b5cf6;#3b82f6"
-              dur="3s"
+              values="#22d3ee;#f43f5e;#22d3ee"
+              dur="4s"
               repeatCount="indefinite"
             />
           </stop>
           <stop offset="100%" className="text-accent-500">
             <animate
               attributeName="stop-color"
-              values="#8b5cf6;#3b82f6;#8b5cf6"
-              dur="3s"
+              values="#0891b2;#22d3ee;#0891b2"
+              dur="4s"
               repeatCount="indefinite"
             />
           </stop>

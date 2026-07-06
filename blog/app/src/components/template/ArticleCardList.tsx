@@ -32,12 +32,13 @@ const ArticleCardList: React.FC<Props> = ({ articles }) => {
   return (
     <>
       <ul className="grid gap-6 md:grid-cols-2 md:gap-8">
-        {articles.map((article) => (
+        {articles.map((article, index) => (
           <Link key={article.id} href={`/articles/${article.id}`}>
             <ArticleCard
               subTitle="ブログ記事"
               title={article.title}
               footerText={toSnsPostedDate(article.publishedAt)}
+              index={index}
             ></ArticleCard>
           </Link>
         ))}
